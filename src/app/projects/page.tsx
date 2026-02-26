@@ -82,7 +82,7 @@ export default function ProjectsPage() {
             onAction={() => router.push('/projects/new')}
           />
         ) : (
-          <div className="grid grid-cols-2 gap-4 px-5 pt-2 pb-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 px-5 pt-2 pb-4">
             {filtered.map((project) => (
               <ProjectCard key={project.id} project={project} />
             ))}

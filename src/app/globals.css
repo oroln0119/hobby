@@ -68,6 +68,13 @@ html {
   overscroll-behavior: none;
 }
 
+/* ─── 반응형: 데스크탑에서 하단 패딩 제거 ──────────────────────────── */
+@media (min-width: 768px) {
+  main[style*="paddingBottom"] {
+    padding-bottom: 1.5rem !important;
+  }
+}
+
 /* ─── 아코디언 애니메이션 (CSS Grid 방식) ──────────────────────────── */
 .accordion-content {
   display: grid;

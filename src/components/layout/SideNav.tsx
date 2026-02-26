@@ -10,7 +10,7 @@ const tabs = [
     label: '프로젝트',
     icon: (active: boolean) => (
       <svg
-        className={`w-6 h-6 ${active ? 'text-oat-500' : 'text-linen-400'}`}
+        className={`w-5 h-5 ${active ? 'text-oat-500' : 'text-linen-400'}`}
         fill="none"
         stroke="currentColor"
         strokeWidth={active ? 2.2 : 1.8}
@@ -30,7 +30,7 @@ const tabs = [
     label: '인벤토리',
     icon: (active: boolean) => (
       <svg
-        className={`w-6 h-6 ${active ? 'text-oat-500' : 'text-linen-400'}`}
+        className={`w-5 h-5 ${active ? 'text-oat-500' : 'text-linen-400'}`}
         fill="none"
         stroke="currentColor"
         strokeWidth={active ? 2.2 : 1.8}
@@ -46,35 +46,36 @@ const tabs = [
   },
 ];
 
-export default function BottomNav() {
+export default function SideNav() {
   const pathname = usePathname();
 
   return (
-    <nav
-      className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-linen-200"
-      style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
-    >
-      <div className="flex h-16">
+    <aside className="hidden md:flex flex-col w-56 shrink-0 bg-white border-r border-linen-100 h-screen sticky top-0">
+      {/* 로고 */}
+      <div className="px-6 py-6 border-b border-linen-100">
+        <span className="text-xl font-bold text-linen-900">🧶 뜨개 노트</span>
+      </div>
+
+      {/* 네비게이션 */}
+      <nav className="flex flex-col gap-1 p-3 flex-1">
         {tabs.map((tab) => {
           const active = pathname.startsWith(tab.href);
           return (
             <Link
               key={tab.id}
               href={tab.href}
-              className="flex-1 flex flex-col items-center justify-center gap-0.5 min-h-[44px] transition-colors"
+              className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-colors ${
+                active
+                  ? 'bg-oat-50 text-oat-600'
+                  : 'text-linen-500 hover:bg-linen-50 hover:text-linen-800'
+              }`}
             >
               {tab.icon(active)}
-              <span
-                className={`text-[10px] font-medium leading-none ${
-                  active ? 'text-oat-500' : 'text-linen-400'
-                }`}
-              >
-                {tab.label}
-              </span>
+              {tab.label}
             </Link>
           );
         })}
-      </div>
-    </nav>
+      </nav>
+    </aside>
   );
 }
