@@ -51,7 +51,7 @@ export default function BottomNav() {
 
   return (
     <nav
-      className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-linen-200"
+      className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-linen-200 md:left-1/2 md:-translate-x-1/2 md:w-[375px] md:right-auto"
       style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
     >
       <div className="flex h-16">
