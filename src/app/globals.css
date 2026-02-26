@@ -1,26 +1,84 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* ─── 따뜻한 뜨개질 팔레트 ─────────────────────────────────────────── */
 @theme inline {
+  /* Primary: 따뜻한 오트밀/크림 계열 */
+  --color-oat-50:  #fdf8f0;
+  --color-oat-100: #f7eddb;
+  --color-oat-200: #eeddc0;
+  --color-oat-300: #e0c79a;
+  --color-oat-400: #ccaa72;
+  --color-oat-500: #b8904e;
+
+  /* Accent: Dusty Rose */
+  --color-rose-wool-100: #f5e6e2;
+  --color-rose-wool-300: #d9a89e;
+  --color-rose-wool-500: #b8736a;
+
+  /* 재고 보유 (초록) */
+  --color-sage-50:  #f2f8f2;
+  --color-sage-100: #e8f0e8;
+  --color-sage-400: #7aab7a;
+  --color-sage-500: #5f9b5f;
+  --color-sage-600: #4d8a4d;
+
+  /* 재고 없음 (빨강) */
+  --color-yarn-red-50:  #fef5f5;
+  --color-yarn-red-100: #fce8e8;
+  --color-yarn-red-500: #c94040;
+
+  /* 중립 표면/텍스트 */
+  --color-linen-50:  #fafaf8;
+  --color-linen-100: #f2f0ec;
+  --color-linen-200: #e5e1da;
+  --color-linen-300: #cdc8bf;
+  --color-linen-400: #b5afa4;
+  --color-linen-600: #7a7267;
+  --color-linen-700: #5c5650;
+  --color-linen-900: #2a2520;
+
+  /* 상태 뱃지 */
+  --color-status-todo:          #e8eaf5;
+  --color-status-todo-text:     #5157a0;
+  --color-status-progress:      #fff4e0;
+  --color-status-progress-text: #9a6200;
+  --color-status-done:          #e8f0e8;
+  --color-status-done-text:     #2d6b2d;
+
+  /* 기존 호환 */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --background: #fafaf8;
+  --foreground: #2a2520;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  overscroll-behavior: none;
+}
+
+/* ─── 아코디언 애니메이션 (CSS Grid 방식) ──────────────────────────── */
+.accordion-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 250ms ease;
+}
+
+.accordion-content.open {
+  grid-template-rows: 1fr;
+}
+
+.accordion-inner {
+  overflow: hidden;
 }
